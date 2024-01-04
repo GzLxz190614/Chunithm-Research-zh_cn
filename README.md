@@ -1,10 +1,12 @@
-This is an informative document on how the files in Chunithm are formatted and function. This is **not** meant to be a complete guide on how to create custom charts for Chunithm. All information on this document was discovered via personal research. Contributions and further research are welcome. This document may be used for any purpose, including the creation of a tool to create Chunithm charts. See [UNLICENSE](https://github.com/Suprnova123/Chunithm-Research/blob/main/UNLICENSE) for more information. For disclaimers and copyright attributions, please see [DISCLAIMER](https://github.com/Suprnova123/Chunithm-Research/blob/main/DISCLAIMER).
+这是一份关于 Chunithm 文件格式和功能的资料性文件。这**并不是**关于如何为 Chunithm 创建自定义内容的完整指南。本文档中的所有信息都是通过个人研究发现的。欢迎贡献和进一步研究。本文档可用于任何目的，包括创建 Chunithm 谱面的工具。更多信息，请参阅。有关免责声明和版权归属，请参阅。更多信息，请参阅 [UNLICENSE](UNLICENSE) 。 有关免责声明和版权归属，请参阅 [DISCLAIMER](DISCLAIMER)。
 
-# Contents
+原项目地址：[Chunithm-Research](https://github.com/Suprnova/Chunithm-Research)
 
-* [General Information](https://github.com/Suprnova123/Chunithm-Research/blob/main/General.md)
-* [Charting](https://github.com/Suprnova123/Chunithm-Research/blob/main/Charting.md)
-* [Music](https://github.com/Suprnova123/Chunithm-Research/blob/main/Music.md)
-* [How to Properly Add Customs](https://github.com/Suprnova123/Chunithm-Research/blob/main/Customs.md)
+# 目录
 
-(More documents are to come)
+* [基本信息](General.md)
+* [谱面](Charting.md)
+* [乐曲](Music.md)
+* [如何正确添加自制内容](Customs.md)
+
+(更多文件将陆续提供）（在2024.1，github上显示的最后更新时间为3年前）

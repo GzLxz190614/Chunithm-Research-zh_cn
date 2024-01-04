@@ -1,10 +1,10 @@
-This is a general documentation of the ``Music.xml`` file present in every music folder under the path ``root¥app¥data¥AXXX¥music¥musicXXXX¥Music.xml``. 
+这是每个乐曲文件夹下的 ``root\app\data\AXXX\music\musicXXXX\Music.xml`` 文件的通用文档。
 
-# Overview
+# 概述
 
-``Music.xml`` is a singular file that is in the same folder as the charts for a specific song. This file is essentially the metadata of the song, and provides the game with nearly all information about the song excluding the chart itself. Note that this documentation will not include the structure of the entire XML file, only the meanings of it. To create your own ``Music.xml`` file, use a preexisting one as a template, then use the specifications listed here.
+``Music.xml`` 是与特定歌曲的谱面同在一个文件夹中的单一文件。该文件实质上是歌曲的元数据，为游戏提供了除谱面外几乎所有关于歌曲的信息。请注意，本文档不包括整个 XML 文件的结构，只包括其中的含义。要创建自己的 ``Music.xml`` 文件，请使用已有的文件作为模板，然后使用此处列出的规范。
 
-The ``Music.xml`` files in this game make frequent use of a stock array layout, shown below:
+本游戏中的 ``Music.xml`` 文件频繁使用了库存数组布局，如下所示：
 
 ```xml
 <id></id>
@@ -12,130 +12,130 @@ The ``Music.xml`` files in this game make frequent use of a stock array layout, 
 <data />
 ```
 
-Any references to a "stock array" will mean that there is this array format within the value, with the ``<id>`` and ``<str>`` tags having their values specified. ``<data />`` will never contain any values, and will always be formatted as such.
+任何对 "库存数组 "的引用都意味着值中存在这种数组格式，``<id>`` 和 ``<str>`` 标签已指定其值。``<data />``从不包含任何值，并始终采用这种格式。
 
-# Tags
+# 标记
 
 ## dataName
 
-The ``<dataname>`` tag will have a single value named after the parent folder, usually ``musicXXXX``.
+``<dataname>``标记将有一个以父文件夹命名的值，通常是``musicXXXX``。
 
 ## formatVersion
 
-The ``<formatVersion>`` tag will always have a value of ``10000``.
+``<formatVersion>``标记的值始终为 ``10000``。
 
 ## resourceVersion
 
-The ``<resourceVersion>`` tag always contains a stock array with an ``<id>`` value of ``0`` and a ``<str>`` value of ``10000``.
+``<resourceVersion>``标记始终包含一个库存数组，其``<id>``值为``0``，``<str>``值为``10000``。
 
 ## netOpenName
 
-The ``<netOpenName>`` tag contains a stock array with unknown values. A possible explanation is that these values signify the update that the song was originally added to the game from.
+``<netOpenName>``标记包含一个未知值的存量数组。可能的解释是，这些值表示歌曲最初添加到游戏中的更新。
 
 ## disableFlag
 
-The ``<disableFlag>`` tag has a value of either ``false`` or ``true``. Enabling the disableFlag will make it so that the song does not appear on the song selection screen.
+``<disableFlag>``标签的值为``false``或``true``。启用 disableFlag 后，歌曲将不会出现在歌曲选择屏幕上。
 
 ## exType
 
-The ``<exType>`` tag has a value of an integer between 0 and 2. With a value of ``0``, the song becomes a normal song that can be selected from the song selection screen. With a value of ``1``, the song becomes a tutorial song. With a value of ``2``, the song becomes a WORLD'S END song.
+``<exType>``标记的值为 0 到 2 之间的整数。如果值为 ``0``，歌曲将成为可在歌曲选择屏幕上选择的普通歌曲。如果值为``1``，歌曲将成为教程歌曲。数值为 ``2`` 时，歌曲将变为 WORLD'S END 歌曲。
 
 ## name
 
-The ``<name>`` tag contains a stock array with an ``<id>`` value equal to the last 4 digits of the parent folder's name, removing any preceeding 0s, and a ``<str>`` value containing the name of the song as it will appear in-game.
+``<name>``标记包含一个库存数组，其中``<id>``值等于父文件夹名称的后 4 位数字（去掉前面的 0），``<str>``值包含将在游戏中显示的歌曲名称。
 
 ## rightsInfoName
 
-The ``<rightsInfoName>`` tag contains a stock array with an ``<id>`` value equal to the corresponding ``rightsInfo`` file in the ``root¥app¥data¥AXXX¥rightsInfo¥rightsInfoXXXXXX`` folder, removing any preceeding 0s, and a ``<str>`` value containing the name of the rights holder as it appears in the ``RightsInfo.xml`` file's ``name`` tag (not how it appears in-game). If the song does not need a rights disclaimer, then the ``<id>`` has a value of ``-1`` and the ``<str>`` has a value of ``Invalid``.
+``<rightsInfoName>``标记包含一个库存数组，其``<id>``值等于``root\app\data\AXXX\rightsInfo\rightsInfoXXXX``文件夹中相应的``rightsInfo``文件，去掉前面的0，以及一个``<str>``值，其中包含在``RightsInfo.xml``文件的``name``标记中显示的版权持有者名称（而非游戏中的名称）。如果歌曲不需要版权声明，则 ``<id>`` 的值为 ``-1``，``<str>`` 的值为 ``Invalid``。
 
 ## sortName
 
-The ``<sortName>`` tag contains the name of the song in a format that can be sorted alphabetically. All Latin characters become capitalized, and all punctuation and spaces are removed. For titles in Japanese, all hiragana and kanji are converted into their katakana counterpart.
+``<sortName>``标记以可按字母顺序排序的格式包含歌曲名称。所有拉丁字符均大写，所有标点符号和空格均被删除。对于日文标题，所有平假名和汉字都会转换成对应的片假名。
 
 ## artistName
 
-The ``<artistName>`` tag contains a stock array with an ``<id>`` value equal to the ID of the artist, and a ``<str>`` value of the name of the artist as it will appear in-game. If the artist was not previously used in a song, it should be given the same ID as the song. If an artist was previously used, it should be given the same ID as the artist ID used in those previous songs.
+``<artistName>``标记包含一个库存数组，其中``<id>``的值等于曲师的 ID，``<str>``的值是曲师在游戏中的名字。如果该曲师之前未在歌曲中使用过，则应赋予其与歌曲相同的 ID。如果以前使用过曲师，则应赋予与以前歌曲中使用的曲师 ID 相同的 ID。
 
 ## genreName
 
-The ``<genreName>`` tag contains a ``<list>`` tag, which contains a ``<StringID>`` tag, which contains a stock array, with an ``<id>`` value equal to the ID of the genre in question according to the ``GenreSort.xml`` file found in ``root¥app¥data¥AXXX¥music``, and a ``<str>`` value equal to the name of the genre as it appears in the ``GenreSort.xml`` file.
+``<genreName>``标记包含一个``<list>``标记，该标记包含一个``<StringID>``标记，该标记包含一个存量数组，其中``<id>``值等于根据``root\app\data\AXXX\music``中的``GenreSort.xml``文件找到的有关版本的 ID，``<str>``值等于在``GenreSort.xml``文件中出现的版本名称。
 
 ## worksName
 
-The ``<worksName>`` tag contains a stock array, with an ``<id>`` value equal to the ID of the work that the song originates from, and a ``<str>`` value equal to the name of the work in question. This follows the same specifications as ``<artistName>``. If the song does not need a rights disclaimer, then the ``<id>`` has a value of ``-1`` and the ``<str>`` has a value of ``Invalid``.
+``<worksName>``标记包含一个库存数组，其中``<id>``值等于歌曲来源作品的 ID，``<str>``值等于相关作品的名称。这与 ``<artistName>`` 的规格相同。如果歌曲不需要版权声明，则``<id>``的值为``-1``，``<str>``的值为``Invalid``。
 
 ## jaketFile
 
-The ``<jaketFile>`` tag contains a ``<path>`` tag, with a value equal to the name of the file that contains the jacket of the song, usually found in the same directory as the Music.xml file.
+``<jaketFile>``标记包含一个``<path>``标记，其值等于包含歌曲封面的文件名，通常与 Music.xml 文件位于同一目录。
 
 ## firstLock
 
-The ``<firstLock>`` tag has a value of either ``false`` or ``true``. If the value is ``true``, then the song will not be listed on the song selection screen unless specific criteria has been fulfilled to unlock the song.
+``<firstLock>``标记的值为``false``或``true``。如果值为 ``true``，那么歌曲将不会被列在歌曲选择列表中，除非满足特定条件才能解锁歌曲。
 
 ## priority
 
-The ``<priority>`` tag always has a value of ``0``. With a value of ``1``, there does not appear to be any difference.
+``<firstLock>``标记的值为``false``或``true``。如果值为 ``true``，那么歌曲将不会被列在歌曲选择列表中，除非满足特定条件才能解锁歌曲。
 
 ## cueFileName
 
-The ``<cueFileName>`` tag contains a stock array with an ``<id>`` value equal to the ID of the cueFile as seen in the ``CueFile.xml`` file found in ``root¥app¥data¥AXXX¥cueFile¥cueFileXXXXXX``.
+``<cueFileName>``标记包含一个库存数组，其``<id>``值等于在``root\app\data\AXXX\cueFile\cueFileXXXX``中找到的``CueFile.xml``文件中的 cueFile 的 ID。
 
 ## previewStartTime
 
-The ``<previewStartTime>`` tag contains an integer that designates the location in the song, in milliseconds, that the preview, the part of the song that plays when the song is highlighted on the song selection screen, will start.
+``<previewStartTime>``标记包含一个整数，指定歌曲中预览开始的位置（以毫秒为单位），预览是歌曲在选曲屏幕上高亮显示时播放的部分。
 
 ## previewEndTime
 
-The ``<previewEndTime>`` tag contains an integer that designates the location in the song, in milliseconds, that the preview will end. After ending, it will loop back to the ``<previewStartTime>``.
+``<previewEndTime>``标记包含一个整数，指定预览结束的歌曲位置（以毫秒为单位）。结束后，它将循环回到 ``<previewStartTime>`` 。
 
 ## worldsEndTagName
 
-The ``<worldsEndTagName>`` tag contains a stock array, with an ``<id>`` value that corresponds with the WORLD'S END type that the music is, and a ``<str>`` value that has the name of the WORLD'S END type in kanji. If the track is not a WORLD'S END track, then the ``<id>`` has a value of ``-1`` and the ``<str>`` has a value of ``Invalid``. 
+``<worldsEndTagName>``标记包含一个库存数组，其中``<id>``的值与乐曲的 WORLD'S END 类型相对应，``<str>``的值用汉字表示 WORLD'S END 类型的名称。如果音轨不是 WORLD'S END 音轨，则``<id>``的值为``-1``，``<str>``的值为``Invalid``。
 
 ## starDifType
 
-The ``<starDifType>`` tag contains an unknown integer. It's possible that this value correlates to the difficulty of the music in question.
+``<starDifType>``标记包含一个未知整数。这个值可能与音乐的难度有关。
 
 ## stageName
 
-The ``<stageName>`` tag contains a stock array with an ``<id>`` value equal to the ID of a stage, which is the background video that appears behind the field during gameplay, and can be found in the path ``root¥app¥data¥AXXX¥stage``, and a ``<str>`` value equal to the ``<name><str>`` value found in the corresponding ``Stage.xml`` file.
+``<stageName>`` 标记包含一个库存数组，其中的 ``<id>`` 值等于场景的 ID，即游戏过程中出现在栏位后面的背景视频，可在路径 ``root\app\data\AXXX\stage`` 中找到，而 ``<str>`` 值等于相应的 ``Stage.xml`` 文件中的 ``<name><str>`` 值。
 
 ## fumens
 
-``<fumens>``, which means "譜面" and is translated into simply "music", is the tag that contains all information for each individual difficulty. The fumens tag will contain 5 ``<MusicFumenData>`` tags, one for each difficulty, even if there are less than 5 difficulties.
+``<fumens>`` 的意思是 "谱面"，翻译过来就是 "音乐"，是包含每个难度的所有信息的标记。fumens 标记将包含 5 个 ``<MusicFumenData>`` 标记，每个难度一个，即使对应乐曲难度少于 5 个。
 
 ## MusicFumenData
 
-The ``<MusicFumenData>`` tag contains an array of information for each difficulty on the song. All tags listed below are part of the array.
+``<MusicFumenData>``标记包含歌曲中每个难度的信息数组。下面列出的所有标记都是数组的一部分。
 
 ### resourceVersion
 
-The ``<resourceVersion>`` tag always contains a stock array with an ``<id>`` value of ``0`` and an empty ``<str />`` tag.
+``<resourceVersion>`` 标记总是包含一个库存数组，其 ``<id>`` 值为 ``0`` 和一个空的 ``<str />`` 标记。
 
 ### type
 
-The ``<type>`` tag is a stock array that contains information on which difficulty this specific ``<MusicFumenData>`` is. It has an ``<id>`` value that can be anywhere from ``0`` to ``4``. The ``<str>`` value can have a value of ``ID_00``, ``ID_01``, ``ID_O2``, ``ID_03``, or ``ID_04``, but must end with the same digit as the ``<id>`` tag's value. The ``<data>`` tag contains the name of the difficulty, which can be ``BASIC``, ``ADVANCED``, ``EXPERT``, ``MASTER``, or ``WORLD'S END``. This value has to correspond with the ``<id>`` and ``<str>`` tag in order. For example, BASIC has an ID of 0, ADVANCED has an ID of 1, and so on.
+``<type>``标记是一个库存数组，其中包含有关该特定``<MusicFumenData>``是哪种难度的信息。它有一个 ``<id>`` 值，可以是 ``0`` 到 ``4`` 之间的任意值。``<str>`` 值可以是 ``ID_00``、``ID_01``、``ID_O2``、``ID_03`` 或 ``ID_04``，但必须以与 ``<id>`` 标签值相同的数字结尾。``<data>`` 标记包含难度名称，可以是``BASIC``、``ADVANCED``、``EXPERT``、``MASTER``或``WORLD'S END``。该值必须依次与 ``<id>`` 和 ``<str>`` 标记相对应。例如，BASIC 的 ID 为 0，ADVANCED 的 ID 为 1，以此类推。
 
 ### enable
 
-The ``<enable>`` tag can have a value of either ``true`` or ``false``. If the value is false, the difficulty will not appear. This is set to false on the WORLD'S END ``<MusicFumenData>`` tags when the song is normal, and is set to false on all difficulties besides WORLD'S END on WORLD'S END tracks.
+``<enable>``标记的值可以是``true``或``false``。如果值为``false``，难度将不会出现。在 WORLD'S END 的 ``<MusicFumenData>`` 标记上，如果歌曲是 normal，则此值设为 false，而在 WORLD'S END 曲目上，除了 WORLD'S END 之外的所有难度都设为 false。
 
 ### file
 
-The ``<file>`` tag contains a ``<path>`` tag, which has the file name of the .c2s file associated with the specific difficulty. If the difficulty doesn't exist and is disabled, then it is replaced by an empty ``<path />`` tag.
+``<file>``标记包含一个``<path>``标记，该标记包含与特定难度相关联的 .c2s 文件的文件名。如果难度不存在且已禁用，则该标签将被空的 ``<path />`` 标签取代。
 
 ### level
 
-The ``<level>`` tag contains an integer equal to the level of difficulty of the song as shown in-game. If the difficulty doesn't exist, or if the difficulty is WORLD'S END, then the tag has a value of ``0``.
+``<level>``标记包含一个整数，等于游戏中显示的歌曲难度级别。如果难度不存在，或难度为 WORLD'S END，则标记的值为 ``0``。
 
 ### levelDecimal
 
-The ``<levelDecimal>`` tag contains an integer from 0-99 equal to the decimal difficulty of the track. This is combined with the ``<level>`` tag to create the accurate difficulty level. This level isn't seen during gameplay, but is instead used for sorting tracks by difficulty. If the difficulty doesn't exist, or if the difficulty is WORLD'S END, then the tag has a value of ``0``.
+``<levelDecimal>`` 标记包含一个 0-99 的整数，等于轨道的十进制难度。它与 ``<level>`` 标签相结合，可创建准确的难度级别。在游戏过程中看不到这个级别，而是用于按难度对曲目进行排序。如果难度不存在，或难度为 WORLD'S END，则标记的值为 ``0``。
 
 ### notesDesigner
 
-The ``<notesDesigner>`` tag is always empty, and as such is written as ``<notesDesigner />``. This is because the ``.c2s`` file contains the note designer's information instead.
+``<notesDesigner>``标记总是空的，因此被写成``<notesDesigner />``。这是因为 ``.c2s`` 文件中包含了谱师的信息。
 
 ### defaultBpm
 
-The ``<defaultBpm>`` tag always has a value of ``<0>``.
+``<defaultBpm>``标记的值始终为``<0>``。

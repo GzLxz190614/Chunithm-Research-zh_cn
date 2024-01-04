@@ -1,59 +1,59 @@
-This is a list of general information that should be known regarding Chunithm's file format, as well as this collection of research. This includes a list of files of interest, the general overview of them, and links to additional documentation if available, as well as meta information about this research document.
+这是一份关于Chunithm的文件格式以及本研究文集的一般信息列表。其中包括感兴趣的文件列表、文件概览、其他文件链接（如有）以及本研究文件的元信息。
 
 # Meta
 
-* This guide is **not** guaranteed to be up to date with the current version of Chunithm. This guide was written with Chunithm Paradise in mind. While I assume that almost all information here will continue to be relevant in later versions of Chunithm, I cannot guarantee that it will be 100% compatible with later releases, such as Paradise Lost and NEW. Additionally, AIR SLIDE notes and AIR CRUSH notes, which made their appearances in NEW, do not have charting documentation yet. This may change in the future.
-* This is **not** a guide for creating custom songs in Chunithm "clones". This includes programs like SUSPlayer, Laverita, or Seaurchin. These games use different chart formats and have an entirely different, usually streamlined, way of implementing custom songs.
-* Chunithm makes frequent use of ``.xml`` files. This document will, for the sake of simplicity, assume that you understand the basic format of ``.xml`` files.
-* References to "music" and "song" will refer to the files in the ``music`` folder, which includes ``Music.xml``, as well as the chart files. References to ``audio`` will refer to the files in the ``cueFile`` folder.
-* If anyone makes a tool to streamline any process outlined in this document, while credit to this document obviously isn't required (see [UNLICENSE](https://github.com/Suprnova123/Chunithm-Research/blob/main/UNLICENSE)), it would still be appreciated.
+* 本指南**并不保证**与当前版本的 Chunithm Paradise 同步。本指南是根据 "Chunithm Paradise"编写的。虽然我假定本指南中的几乎所有信息都将继续适用于 Chunithm 的后续版本，但我不能保证本指南与 Paradise Lost 和 Chunithm New 等后续版本100%兼容。此外，在新版中出现的 AIR SLIDE notes和 AIR CRUSH notes还没有谱面文档。未来可能会有所改变。
+* 这**不是**在 Chunithm "clones"中创建自定义歌曲的指南。这包括像 SUSPlayer、Laverita 或 Seaurchin 等程序。这些游戏使用不同的谱面格式，并以完全不同的、通常是精简的方式实现自定义歌曲。
+* Chunithm 经常使用``.xml``文件。为方便起见，本文档假定您了解``.xml``文件的基本格式。
+* 提及 "音乐"和 "歌曲"时，指的是 ``music`` 文件夹中的文件，其中包括 ``Music.xml`` 和谱面文件。提到 ``audio`` 时，将指的是 ``cueFile`` 文件夹中的文件。
+* 如果有人制作了一种工具来简化本文档中概述的任何流程，虽然显然不需要注明本文档的出处（查看 [UNLICENSE](UNLICENSE)）， 但我们仍将不胜感激。
 
-# How Songs End
+# 歌曲如何结束
 
-When playing a song in Chunithm, the chart will "end" after the last note. This is where the animation for the progress bar at the top and the FULL COMBO/ALL JUSTICE graphic appear. However, the song will "end" after the audio file is finished playing. This is where any skills that occur at the end of a song (such as SUPPORT skills) will activate, and the results screen will appear shortly after.
+在 Chunithm 中游玩歌曲时，谱面将在最后一个 note 之后”结束"。这时，顶部的进度条动画和"FULL COMBO/ALL JUSTICE "图形就会出现。但是，歌曲会在音频文件播放完毕后"结束"。这时，歌曲结束时出现的任何技能（如支援技能）都会激活，不久后就会出现结算页面。
 
-# MASTER and WORLD'S END Difficulties
+# MASTER 和 WORLD'S END 难度
 
-MASTER difficulties for songs are inaccessible unless one of two conditions are fulfilled:
+除非满足两个条件之一，否则歌曲的 MASTER 难度将无法解锁：
 
-* The player has passed the EXPERT difficulty of the song with an S rank or higher, OR
+* 玩家以 S 评级或更高评级通过了歌曲的MASTER难度，或
 
-* The player is using a ticket that allows playing MASTER difficulty songs. (Noted as enabled in the ticket's ``Ticket.xml`` file under the ``<playMaster>`` field)
+* 玩家使用的票卷允许游玩MASTER难度的谱面。(在票卷的 ``Ticket.xml`` 文件中的 ``<playMaster>`` 字段下注明已启用）。
 
-When creating custom songs, it is important to note this. Charters should always have a valid, completable chart for the EXPERT difficulty if they intend to have their chart have a MASTER difficulty. Otherwise, the chart should be set to one of the other 3 normal difficulties.
+在创建自制谱时，一定要注意这一点。如果谱面作者打算让其谱面具有MASTER难度，则应始终为MASTER难度提供有效的、可完成的谱面。否则，应将谱面设为其他 3 个正常难度之一。
 
-WORLD'S END difficulties for songs are inaccessible unless the player is using a ticket that allows playing WORLD'S END songs. (Noted as enabled in the ticket's ``Ticket.xml`` file under the ``<playWorldsEnd>`` field) When creating custom songs, it is inadvisable to create WORLD'S END charts. It is impossible for the player to access these charts unless they are connected to an AIME or Minime server, and purchase or cheat in a WORLD'S END ticket.
+除非玩家使用的票卷允许游玩 WORLD'S END 难度的乐曲，否则无法访问乐曲的 WORLD'S END 难度。(在票卷的``Ticket.xml``文件的``<playWorldsEnd>``字段下注明已启用） 创建自制谱时，不宜创建 WORLD'S END 谱面。除非玩家连接到 AIME 或 Minime 服务器，并购买或使用 WORLD'S END 票卷作弊，否则无法访问这些谱面。
 
-# Folders
+# 文件夹
 
-Chunithm's method of receiving updates involves storing the new information in separate "AXXX" folders, found in ``root¥app¥data``. These folders will have varying numbers replacing the Xs depending on the update. Any references to "AXXX" in this document will refer to an unspecified ``A`` Folder. It is worth noting that, while songs usually have their complementary files (audio, jackets, rights) in the same ``A`` folder, it is possible that they are also in other folders. At the moment, it is assumed that newer AXXX folders will overwrite the older AXXX folders' data in terms of being in-game, although the older files will remain intact, however this is not confirmed. It is worth noting that Chunithm's updates will regularly remove certain songs that were prexisting, usually from rights expiring. It is also worth noting that the major updates for Chunithm that change branding and add new features (for example, Amazon to Crystal, or Crystal to Paradise) will not involve new AXXX files, instead condensing them all into the A000 folder. The .exe in ``root¥app¥bin`` may also be overwritten, among other binaries.
+Chunithm 接收更新的方法是将新信息分别存储在 "root\app\data "中的 "AXXX "文件夹中。根据更新内容的不同，这些文件夹中的 "X "代表不同的数字。本文档中提到的 "AXXX "指的是未指定的 "A "文件夹。值得注意的是，虽然歌曲的补充文件（音频、封面、版权）通常都在同一个 ``A`` 文件夹中，但它们也有可能在其他文件夹中。目前，我们假设较新的 AXXX 文件夹将覆盖较旧的 AXXX 文件夹在游戏中的数据，尽管较旧的文件将保持不变，但这一点尚未得到证实。值得注意的是，Chunithm 的更新会定期删除某些预先存在的歌曲，通常是由于版权到期。此外，值得注意的是，Chunithm的主要更新会改变名称和增加新功能（例如，Amazon到Crystal，或Crystal到Paradise），不会涉及新的AXXX文件，而是将它们全部压缩到A000文件夹中。除其他二进制文件外，``root\app\bin``中的.exe也可能被覆盖。
 
-# File Types
+# 文件类型
 
-This is a list of file types of interest that do not have a dedicated page for them, as well as the locations of them and links to additional info if necessary. This is **not** an extensive list, some files that are not of interest will not be included.
+这是一份没有专门页面的相关文件类型的列表，以及这些文件的位置和必要的其他信息链接。这**并不是**一个广泛的列表，一些不感兴趣的文件将不包括在内。
 
-## Audio Files
+## 音频文件
 
-Audio files for music are found in ``root¥app¥data¥AXXX¥cueFile¥cueFileXXXXXX``. The ID of the cueFile can be found in the XML ``<cueFileName>`` tag of the ``Music.xml`` file in the same folder as the chart files for the song of interest. More often than not, these files share the same ID as their corresponding music ID. These files are encoded in the proprietary [CRIWARE ADX2 audio format](https://en.wikipedia.org/wiki/ADX_(file_format)), in pairs of ``.awb`` and ``.acb`` files. These files can be played and converted by the [vgmstream](https://vgmstream.org/) library, specifically the component for [foobar2000](https://www.foobar2000.org/). Information on how to encode your own files into this format can be found in the [Customs](https://github.com/Suprnova123/Chunithm-Research/blob/main/Customs.md) document.
+音乐音频文件位于``root\app\data\AXXX\cueFile\cueFileXXXXXX``中。插入点文件的 ID 可以在与相关歌曲的谱面文件位于同一文件夹中的 ``Music.xml`` 文件的 XML ``<cueFileName>`` 标记中找到。通常情况下，这些文件的 ID 与相应的音乐 ID 相同。这些文件以专有的[CRIWARE ADX2 音频格式](https://en.wikipedia.org/wiki/ADX_(file_format))编码，以``.awb``和``.acb``文件对形式存在。这些文件可由 [vgmstream](https://vgmstream.org/) 库，特别是 [foobar2000](https://www.foobar2000.org/) 的组件播放和转换。有关如何将自己的文件编码成这种格式的信息，请参阅 [Customs](https://github.com/Suprnova123/Chunithm-Research/blob/main/Customs.md) 文档。
 
-## Jacket Files
+## 封面文件
 
-Jacket files, otherwise known as the images that are associated with the song, are found in the same folder as the chart files in a ``.dds`` (DirectDraw Surface) file format, which can be opened in software such as [GIMP](https://www.gimp.org/). Jacket files are always in a resolution of 300x300. To imitate the same file size as Chunithm's jackets, although not usually necessary, export any custom ``.dds`` jacket files with BC1 / DXT1 compression from GIMP's export settings.
+封面文件，也就是与歌曲相关联的图片，与谱面文件放在同一文件夹中，文件格式为 ``.dds``（DirectDraw Surface），可在 [GIMP](https://www.gimp.org/) 等软件中打开。插图文件的分辨率始终为 300x300。要模仿与 Chunithm 套装相同的文件大小，虽然通常没有必要，但可以从 GIMP 的导出设置中以 BC1 / DXT1 压缩导出任何自定义的 ``.dds`` 套装文件。
 
-## Rights Files
+## 版权文件
 
-Rights files are the images that appear on the bottom left side of the song selection screen for specific songs. They are intended to be used as the file containing the text itself, as the image behind the text is its own separate texture that is reused for every rights file. Rights files are always formatted in a ``.dds`` (DirectDraw Surface) file format in a resolution of 512x48, and can be found in ``root¥app¥data¥AXXX¥rightsInfo¥rightsInfoXXXXXX``. To imitate the same file size as Chunithm's rights files, although not usually necessary, export any custom ``.dds`` rights files with BC1 / DXT1 compression from GIMP's export settings.
+版权文件是出现在特定歌曲选曲界面左下方的图像。由于文字后面的图像是独立的纹理，每个版权文件都会重复使用，因此版权文件应作为包含文字本身的文件使用。版权文件的格式始终是分辨率为 512x48 的``.dds``（DirectDraw Surface）文件格式，可以在``root\app\data\AXXX\rightsInfo\rightsInfoXXXXXX`` 中找到。要模仿与 Chunithm 权利文件相同的文件大小，虽然通常没有必要，但可以从 GIMP 的导出设置中使用 BC1 / DXT1 压缩导出任何自定义的 ``.dds`` 权利文件。
 
 # Dummies
 
-Dummy files are used for textures to serve as a template for how the game expects them to be formatted, mostly in terms of resolution. Note that the ``.png`` versions for these files are provided for convenience, all final versions should still be in a ``.dds`` format.
+虚拟文件用于纹理，作为游戏希望纹理格式化的模板，主要是在分辨率方面。请注意，提供这些文件的 ``.png`` 版本只是为了方便，所有最终版本仍应使用 ``.dds`` 格式。
 
 ## Jacket Dummies
 
-* [.dds](https://github.com/Suprnova123/Chunithm-Research/blob/main/_assets/jacket_dummy.dds)
-* [.png](https://github.com/Suprnova123/Chunithm-Research/blob/main/_assets/jacket_dummy.png)
+* [.dds](./_assets/jacket_dummy.dds)
+* [.png](./_assets/jacket_dummy.png)
 
 ## Rights Dummies
 
-* [.dds](https://github.com/Suprnova123/Chunithm-Research/blob/main/_assets/rights_dummy.dds)
-* [.png](https://github.com/Suprnova123/Chunithm-Research/blob/main/_assets/rights_dummy.png)
+* [.dds](./_assets/rights_dummy.dds)
+* [.png](./_assets/rights_dummy.png)
